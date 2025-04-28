@@ -4,7 +4,7 @@
 * @returns {Object} - Ritorna un oggetto
 */
 
-const wapiFetch = async (url, method = 'GET', body = null) => {
+const wapiFetch = async (url, method = 'GET', headers = {}, body = null) => {
     return new Promise((resolve, reject) => {
         const requestId = new Date().getTime();  // ID univoco per tracciare la risposta
 
@@ -33,6 +33,7 @@ const wapiFetch = async (url, method = 'GET', body = null) => {
             url: url,
             requestId: requestId,
             method: method,  // Passa il metodo (GET o POST)
+            headers: headers,
             body: body       // Passa il corpo della richiesta (se esiste)
         }, window.origin);
     });
